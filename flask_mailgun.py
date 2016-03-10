@@ -1,6 +1,8 @@
 import requests
 
+
 class Mailgun(object):
+
     app = None
     mailgun_api = None
 
@@ -10,7 +12,7 @@ class Mailgun(object):
 
     def init_app(self, app):
         self.mailgun_api = MailgunApi(app.config['MAILGUN_DOMAIN'],
-                app.config['MAILGUN_API_KEY'])
+                                      app.config['MAILGUN_API_KEY'])
         self.app = app
 
     def send_email(self, **kwargs):
@@ -23,19 +25,22 @@ class Mailgun(object):
 
         return self.mailgun_api.send_email(**kwargs)
 
+
 class MailgunApi(object):
     def __init__(self, domain, api_key):
         self.domain = domain
         self.api_key = api_key
 
     def send_email(self, **kwargs):
-        response = requests.post(self.endpoint, data=kwargs, auth=self.auth)
+        files = kwargs.pop('files', None)
+        response = requests.post(self.endpoint, data=kwargs, files=files, auth=self.auth)
         response.raise_for_status()
+
         return response
 
     @property
     def endpoint(self):
-        return 'https://api.mailgun.net/v2/{}/messages'.format(self.domain)
+        return 'https://api.mailgun.net/v3/{}/messages'.format(self.domain)
 
     @property
     def auth(self):

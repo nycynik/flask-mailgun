@@ -70,6 +70,10 @@ or later in your application with:
     
 The [Mailgun API Documentation](https://documentation.mailgun.com/user_manual.html#sending-via-api) has more information on the parameters that you can use, and what you can send with it.    
 
-### Authors
-Craig Slusher
+### Contributors
+- Craig Slusher
 [sleekslush](https://github.com/sleekslush)
+- Jacob Magnusson
+[jmagnusson](https://github.com/jmagnusson)
+- Michael Lynch
+[nycynik](https://github.com/nycynik)
