@@ -23,7 +23,7 @@ Documentation
 To install, if you are using a virtual environment you should first switch to that.  You can use pip to install:
 
     pip install flask-mailgun
-
+    
 Or alternatively, you can download the repository and install manually by doing::
 
     git clone git@github.com:sleekslush/flask-mailgun.git
@@ -37,18 +37,18 @@ You can find your API key on your [Mailgun Dashboard at https://mailgun.com/app/
 
     MAILGUN_DOMAIN='<YOUR DOMAIN>'
     MAILGUN_API_KEY='<YOUR API KEY>'
-
+    
 You may also want to set the default from email, so that if you do not provide a _from_ account when you send an email, this email will be used in it's place.
-
+    
     MAILGUN_DEFAULT_FROM='someone@yourdomain.com'
 
-
+                
 **Development Settings**
-
+                
 A good practice is to use the mailgun sandbox for local development. If your application has a development and production settings that differ, it would make sense to use the sandbox for development. There is no charge for sending emails through sandbox, and you can view them on the mailgun website.
 
     MAILGUN_DOMAIN='sandboxXX.mailgun.org'
-
+    
 ### Sending mail
 #### Create the Mailgun Object
 To send an email, first import flask-mailgun, and then create an instance of the _Mailgun_ object.  You will need to pass this the app object so that it can find the settings that it needs, and you can either do this on object creation:
@@ -62,5 +62,18 @@ or later in your application with:
 
 #### Send an email
 
-    data = {"from" : "Awesome User <auser@example.com>",
+    data = {"from" : "Awesome User <auser@example.com>", 
+            "to" : ["someone@otherdomain.com"], 
+            "subject" : "First test", 
+            "text": "Sending my email!"}
+    mailgun.send_email(**data)
     
+The [Mailgun API Documentation](https://documentation.mailgun.com/user_manual.html#sending-via-api) has more information on the parameters that you can use, and what you can send with it.    
+
+### Contributors
+- Craig Slusher
+[sleekslush](https://github.com/sleekslush)
+- Jacob Magnusson
+[jmagnusson](https://github.com/jmagnusson)
+- Michael Lynch
+[nycynik](https://github.com/nycynik)
