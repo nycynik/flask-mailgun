@@ -70,6 +70,29 @@ or later in your application with:
     
 The [Mailgun API Documentation](https://documentation.mailgun.com/user_manual.html#sending-via-api) has more information on the parameters that you can use, and what you can send with it.    
 
+#### Sending a file attachment
+
+    from yourapplication import mailgun
+
+    response = mailgun.send_email(
+    data={
+        "from": "Excited User <mailgun@YOUR_DOMAIN_NAME>",
+        "to": ["bar@example.com", "YOU@YOUR_DOMAIN_NAME"],
+        "subject": "Hello",
+        "text": "Testing some Mailgun awesomness!"
+    },
+    files=[
+        ("attachment", open("files/test.jpg")),
+        ("inline", open("files/inline_test.jpg"))
+    ]
+    )
+
+    print(response)
+    # {
+    #    "message": "Queued. Thank you.",
+    #    "id":    "<20111114174239.25659.5817@samples.mailgun.org>"
+    # }
+
 ### Contributors
 - Craig Slusher
 [sleekslush](https://github.com/sleekslush)
@@ -77,3 +100,5 @@ The [Mailgun API Documentation](https://documentation.mailgun.com/user_manual.ht
 [jmagnusson](https://github.com/jmagnusson)
 - Michael Lynch
 [nycynik](https://github.com/nycynik)
+- Hammy Goonan
+[hammygoonan](https://github.com/hammygoonan)
