@@ -2,8 +2,8 @@ from setuptools import setup
 
 
 setup(
-    name='Flask-Mailgun',
-    version='0.5',
+    name='flask-mailgun',
+    version='0.6',
     url='https://github.com/nycynik/flask-mailgun',
     license='BSD',
     author='Craig Slusher',
